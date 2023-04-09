@@ -4,7 +4,6 @@ const morgan = require("morgan");
 
 const express = require("express");
 const app = express();
-
 let cors = require("cors");
 
 app.use(morgan("tiny"));
@@ -22,10 +21,7 @@ app.use(cors());
 
 // routes
 
-app.get("/", (req, res) => {
-  res.send('<h1>Members API</h1><a href="/u/board">members board</a>');
-});
-
+app.use(express.static("dist"));
 app.use("/u", membersRouter);
 app.use("/tasks", [historyMiddleware, tasksRouter]);
 app.use("/history", [historyRouter]);
