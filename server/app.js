@@ -4,7 +4,6 @@ const morgan = require("morgan");
 
 const express = require("express");
 const app = express();
-let cors = require("cors");
 
 app.use(morgan("tiny"));
 const connectDB = require("./db/connect");
@@ -17,7 +16,6 @@ const errorMiddleware = require("./middleware/error-handler");
 const historyMiddleware = require("./middleware/history-tracker");
 // middleware
 app.use(express.json());
-app.use(cors());
 
 // routes
 
