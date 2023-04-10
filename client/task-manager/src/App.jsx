@@ -19,7 +19,7 @@ function App() {
         <Route path="/new" element={<CreateNewTask />} />
         <Route path="/edit/:id" element={<EditTask />} />
 
-        <Route path="/history" element={<History />} />
+        <Route path="/modifHistory" element={<History />} />
       </Routes>
     </>
   );

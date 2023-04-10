@@ -18,7 +18,7 @@ function FullNav() {
             <NavLink className="nav-link" to="/members">
               Members
             </NavLink>
-            <NavLink className="nav-link" to="/history">
+            <NavLink className="nav-link" to="/modifHistory">
               History
             </NavLink>
             <NavDropdown title="User 4 is logged in" id="basic-nav-dropdown">
