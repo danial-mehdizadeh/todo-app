@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:5000";
+const BaseUrl = "/";
 
 // const DeleteCourseApi = async (id) => {
 //   const result = await axios.delete(BaseUrl + "/" + id);
