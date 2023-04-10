@@ -14,6 +14,10 @@ const TaskSchema = mongoose.Schema({
     required: true,
     default: false,
   },
+  byUser: {
+    type: String,
+    default: "guest",
+  },
 });
 
 module.exports = mongoose.model("Task", TaskSchema);

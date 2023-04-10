@@ -16,17 +16,18 @@ const historyTracker = async (req, res, next) => {
     case "DELETE":
       method = whatAction[2];
   }
-  if (req.method === "GET") {
-    return next();
+  if (whatAction.includes(method)) {
+    const history = await History.create({
+      byUser: req.body?.user || "guest",
+      typeOfAction: method,
+    });
+    if (!history) {
+      throw new BadRequestError("something is wrong with your query");
+    }
   }
-  const history = await History.create({
-    byUser: req.body.user,
-    typeOfAction: method,
-  });
+
   req.typeOfAction = method;
-  if (!history) {
-    throw new BadRequestError("something is wrong with your query");
-  }
+
   next();
 };
 

@@ -18,7 +18,7 @@ const HomePage = () => {
   const [taskData, setTaskData] = useState([]);
 
   useEffect(() => {
-    getAllTasks({ byUser: "guest" }).then((data) => setTaskData(data.tasks));
+    getAllTasks().then((data) => setTaskData(data.tasks));
   }, []);
   return (
     <Container>
@@ -55,8 +55,10 @@ const HomePage = () => {
                       <Button
                         className="button-x"
                         variant="danger"
-                        onClick={() => {
-                          preventDefault();
+                        onClick={(e) => {
+                          e.preventDefault();
+                          deleteTask(elem?._id);
+                          navigate(0);
                         }}
                       >
                         Delete
@@ -64,8 +66,9 @@ const HomePage = () => {
                       <Button
                         className="button-x"
                         variant="primary"
-                        onClick={() => {
-                          preventDefault();
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate("edit/" + elem?._id);
                         }}
                       >
                         Edit
@@ -75,7 +78,7 @@ const HomePage = () => {
                           className="button-x"
                           variant="success"
                           onClick={() => {
-                            preventDefault();
+                            e.preventDefault();
                           }}
                         >
                           Completed
@@ -86,14 +89,14 @@ const HomePage = () => {
                           className="button-x"
                           variant="danger"
                           onClick={() => {
-                            preventDefault();
+                            e.preventDefault();
                           }}
                         >
                           Pending
                         </Button>
                       )}
                     </td>
-                    <td>{elem?.user?.name}</td>
+                    <td>{elem?.byUser}</td>
                   </tr>
                 </tbody>
               </>

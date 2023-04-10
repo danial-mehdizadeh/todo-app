@@ -19,9 +19,9 @@ const getAllTasks = async function (body) {
     }
   }
 };
-const getTask = async (body, user = "guest") => {
+const getTask = async (id) => {
   try {
-    const result = await axios.get(BaseUrl + "/" + body._id, { user });
+    const result = await axios.get(BaseUrl + "/" + id);
     return result.data;
   } catch (error) {
     if (!error.response) {
@@ -33,9 +33,9 @@ const getTask = async (body, user = "guest") => {
   }
 };
 
-const deleteTask = async (id, user = "guest") => {
+const deleteTask = async (id) => {
   try {
-    const result = await axios.delete(BaseUrl + "/" + body._id, { user });
+    const result = await axios.delete(BaseUrl + "/" + id);
     return result.data;
   } catch (error) {
     if (!error.response) {
@@ -46,9 +46,9 @@ const deleteTask = async (id, user = "guest") => {
     }
   }
 };
-const updateTask = async (body, user = "guest") => {
+const updateTask = async (id, body) => {
   try {
-    const result = await axios.patch(BaseUrl + "/" + body._id, { user, body });
+    const result = await axios.patch(BaseUrl + "/" + id, body);
     return result.data;
   } catch (error) {
     if (!error.response) {
@@ -61,7 +61,8 @@ const updateTask = async (body, user = "guest") => {
 };
 const createTask = async (body, user = "guest") => {
   try {
-    const result = await axios.post(BaseUrl, { user, body });
+    console.log(body);
+    const result = await axios.post(BaseUrl, body);
     return result.data;
   } catch (error) {
     if (!error.response) {

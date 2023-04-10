@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import Members from "./components/Members";
 import History from "./components/History";
 import CreateNewTask from "./components/CreateNewTask";
+import EditTask from "./components/EditTask";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -14,8 +15,9 @@ function App() {
       <FullNav />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/members" element={<Members />} />
+        <Route path="/members/" element={<Members />} />
         <Route path="/new" element={<CreateNewTask />} />
+        <Route path="/edit/:id" element={<EditTask />} />
 
         <Route path="/history" element={<History />} />
       </Routes>

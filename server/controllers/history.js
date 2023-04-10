@@ -4,7 +4,7 @@ const BadRequestError = require("../errors/bad-request");
 const History = require("../models/History");
 
 module.exports.getHistory = async (req, res) => {
-  const history = await History.find({});
+  const history = await History.find({}).sort("-date");
   res.status(201).json({ modifHistory: [...history] });
 };
 // const historyTracker = async (req, res) => {
