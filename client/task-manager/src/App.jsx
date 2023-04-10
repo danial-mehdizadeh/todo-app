@@ -7,6 +7,7 @@ import Members from "./components/Members";
 import History from "./components/History";
 import CreateNewTask from "./components/CreateNewTask";
 import EditTask from "./components/EditTask";
+import MembersCreate from "./components/MembersCreate";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/members/" element={<Members />} />
+        <Route path="/create-member/" element={<MembersCreate />} />
         <Route path="/new" element={<CreateNewTask />} />
         <Route path="/edit/:id" element={<EditTask />} />
 

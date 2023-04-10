@@ -11,6 +11,10 @@ const getAllMembers = async (req, res) => {
   const members = await Members.find({});
   res.status(200).json({ members, count: members.length });
 };
+const searchMember = async (req, res) => {
+  const members = await Members.find({ name: { $regex: req.body.name } });
+  res.status(200).json({ members, count: members.length });
+};
 const getMember = async (req, res) => {
   const {
     params: { id: memberID },
@@ -50,6 +54,7 @@ module.exports = {
   createMember,
   getAllMembers,
   getMember,
+  searchMember,
   deleteMember,
   updateMember,
 };

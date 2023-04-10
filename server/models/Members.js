@@ -27,6 +27,10 @@ const MembersSchema = new mongoose.Schema({
     enum: ["fa", "eng", "ar", "de", "ru"],
     trim: true,
   },
+  skills: {
+    type: Array,
+  },
+
   tasks: {
     type: Array,
   },

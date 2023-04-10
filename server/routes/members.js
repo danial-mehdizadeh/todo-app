@@ -7,6 +7,7 @@ const {
   getAllMembers,
   getMember,
   deleteMember,
+  searchMember,
   updateMember,
 } = require("../controllers/members");
 
@@ -17,5 +18,6 @@ router
   .get(getMember)
   .delete(deleteMember)
   .patch(updateMember);
+router.route("/search").post(searchMember);
 
 module.exports = router;

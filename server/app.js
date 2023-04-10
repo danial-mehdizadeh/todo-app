@@ -21,7 +21,7 @@ app.use(express.json());
 
 // routes
 
-app.use(express.static("dist"));
+// app.use(express.static("dist"));
 app.use("/u", membersRouter);
 app.use("/tasks", [historyMiddleware, tasksRouter]);
 app.use("/history", [historyRouter]);
