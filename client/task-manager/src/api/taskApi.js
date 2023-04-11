@@ -22,7 +22,7 @@ const getAllTasks = async function (body) {
 const getTask = async (id) => {
   try {
     const result = await axios.get(
-      "https://todoapp-danialam.onrender.com/u" + "/" + id
+      "https://todoapp-danialam.onrender.com/tasks" + "/" + id
     );
     return result.data;
   } catch (error) {
