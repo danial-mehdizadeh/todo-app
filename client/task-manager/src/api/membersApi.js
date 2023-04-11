@@ -49,7 +49,7 @@ const getAllMembers = async (id, body) => {
 const searchMember = async (body) => {
   try {
     const result = await axios.post(BaseUrl + "/u/search", body);
-    return result.member;
+    return result.data;
   } catch (error) {
     if (!error.response) {
       // network error

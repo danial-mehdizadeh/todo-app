@@ -1,12 +1,12 @@
 require("dotenv").config();
 require("express-async-errors");
 const morgan = require("morgan");
-// const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 const app = express();
 
 app.use(morgan("tiny"));
-// app.use(cors());
+app.use(cors());
 
 const connectDB = require("./db/connect");
 const membersRouter = require("./routes/members");
