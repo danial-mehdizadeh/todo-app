@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = ".";
+const BaseUrl = "https://todoapp-danialam.onrender.com";
 
 // const DeleteCourseApi = async (id) => {
 //   const result = await axios.delete(BaseUrl + "/" + id);
