@@ -3,6 +3,10 @@ const BadRequestError = require("../errors/bad-request");
 
 const Members = require("../models/Members");
 const createMember = async (req, res) => {
+  const existingSuperuser = await Members.findOne({ admin: true });
+  if (existingSuperuser && req.body.admin) {
+    return res.status(400).send("There can only be one superuser");
+  }
   const member = await Members.create(req.body);
   res.status(200).json({ member });
 };
@@ -41,6 +45,10 @@ const updateMember = async (req, res) => {
     body,
     params: { id: memberID },
   } = req;
+  const existingSuperuser = await Members.findOne({ admin: true });
+  if (existingSuperuser && req.body.admin) {
+    return res.status(400).send("There can only be one superuser");
+  }
   const member = await Members.findByIdAndUpdate({ _id: memberID }, req.body, {
     new: true,
     runValidators: true,

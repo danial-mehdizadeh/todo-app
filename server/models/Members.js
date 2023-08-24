@@ -6,6 +6,21 @@ const MembersSchema = new mongoose.Schema({
     maxlength: 30,
     required: true,
     trim: true,
+    unique: true,
+  },
+  admin: {
+    type: Boolean,
+  },
+  image: {
+    type: String,
+    default: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+    required: true,
+  },
+  password: {
+    type: String,
+    minlength: 4,
+    default: "hi",
+    required: true,
   },
   age: {
     type: Number,

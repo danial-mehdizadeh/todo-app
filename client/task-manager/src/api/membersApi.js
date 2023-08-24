@@ -1,16 +1,26 @@
 import axios from "axios";
 
-const BaseUrl = "https://todoapp-danialam.onrender.com";
+import BaseUrl from "./base-url";
 
 // const DeleteCourseApi = async (id) => {
 //   const result = await axios.delete(BaseUrl + "/" + id);
 //   return result.data;
 // };
+const loginApi = async (body) => {
+  try {
+    const result = await axios.post(BaseUrl + "/u/login", body);
+    localStorage.setItem("token", result.data.token);
+    localStorage.setItem("user", body.username);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 const createMember = async (body) => {
   try {
     let { skill: _, ...myBody } = body;
     const result = await axios.post(BaseUrl + "/u/register", myBody);
-    return result.member;
+    return result.data;
   } catch (error) {
     if (!error.response) {
       // network error
@@ -59,4 +69,4 @@ const searchMember = async (body) => {
     }
   }
 };
-export { createMember, getAllMembers, getMember, searchMember };
+export { createMember, getAllMembers, getMember, searchMember, loginApi };

@@ -55,9 +55,13 @@ const HomePage = () => {
                       <Button
                         className="button-x"
                         variant="danger"
-                        onClick={(e) => {
+                        onClick={async (e) => {
                           e.preventDefault();
-                          deleteTask(elem?._id);
+                          try {
+                            await deleteTask(elem?._id);
+                          } catch (error) {
+                            console.log(error);
+                          }
                           navigate(0);
                         }}
                       >

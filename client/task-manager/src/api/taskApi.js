@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BaseUrl = "https://todoapp-danialam.onrender.com/tasks";
+import baseUrl from "./base-url";
+const BaseUrl = baseUrl + "/tasks";
 
 // const DeleteCourseApi = async (id) => {
 //   const result = await axios.delete(BaseUrl + "/" + id);
@@ -21,16 +22,11 @@ const getAllTasks = async function (body) {
 };
 const getTask = async (id) => {
   try {
-    const result = await axios.get(
-      "https://todoapp-danialam.onrender.com/tasks" + "/" + id
-    );
+    const result = await axios.get(BaseUrl + "/" + id);
     return result.data;
   } catch (error) {
     if (!error.response) {
-      // network error
-      this.errorStatus = "Error: Network Error";
-    } else {
-      this.errorStatus = error.response.data.message;
+      console.log(error.response);
     }
   }
 };

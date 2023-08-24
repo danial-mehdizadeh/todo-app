@@ -2,6 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
+const auth = require("../middleware/validator");
+const { login } = require("../controllers/login");
 const {
   createMember,
   getAllMembers,
@@ -16,8 +18,9 @@ router.route("/board").get(getAllMembers);
 router
   .route("/profile/:id")
   .get(getMember)
-  .delete(deleteMember)
+  .delete(auth, deleteMember)
   .patch(updateMember);
 router.route("/search").post(searchMember);
+router.route("/login").post(login);
 
 module.exports = router;
